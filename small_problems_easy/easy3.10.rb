@@ -1,7 +1,7 @@
 # Uppercase Check
 
 def uppercase?(string)
-  string == string.upcase.include?('^a-z')
+  string == string.upcase
 end
 
 
