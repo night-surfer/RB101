@@ -1,0 +1,2 @@
+# ASCII String Value
+

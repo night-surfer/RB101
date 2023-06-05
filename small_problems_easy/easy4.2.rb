@@ -1,24 +1,26 @@
 # What Century is That?
 
-def century(year)
-  century = year / 100 + 1
-  century -= 1 if year % 100 == 0
-  century.to_s + century_suffix(century)
-end
-
-def century_suffix(century)
-  if [11,12,13].include?(century % 100)
-    return "th"
-  end
-  last_digit = century % 10
-  
-  case last_digit
-  when 1 then "st"
-  when 2 then "nd"
-  when 3 then "rd"
-  else "th"
-  end
-end
+#def century(year)
+#  century = year / 100 + 1
+#  if year % 100 == 0            # lines 5 & 6 can also be written out as:
+#    century -= 1                # century -= 1 if year % 100 == 0
+#  end
+#  century.to_s + century_suffix(century)
+#end
+#
+#def century_suffix(century)
+#  if [11,12,13].include?(century % 100)
+#    return "th"
+#  end
+#  last_digit = century % 10
+#  
+#  case last_digit
+#  when 1 then "st"
+#  when 2 then "nd"
+#  when 3 then "rd"
+#  else "th"
+#  end
+#end
 
 # I like this example. Only one method, uses a ternary operator, and is readable
 def century(num)
