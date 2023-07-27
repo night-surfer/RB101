@@ -1,5 +1,7 @@
 VALID_CHOICES = %w(rock paper scissors)
 
+ABBREVIATIONS = %w(r p s)
+
 def prompt(message)
   Kernel.puts("=> #{message}")
 end
@@ -36,12 +38,19 @@ loop do
     prompt("Choose one: #{VALID_CHOICES.join(', ')}?")
     choice = Kernel.gets().chomp()
 
-    if VALID_CHOICES.include?(choice)
+    if VALID_CHOICES.include?(choice) || ABBREVIATIONS.include?(choice)
       break
     else
       prompt("That's not a valid choice.")
     end
   end
+
+#adding part for using abreviations
+  if choice.length == 1
+    idx = ABBREVIATIONS.index(choice)
+    choice = VALID_CHOICES[idx]
+  end
+
 
   computer_choice = VALID_CHOICES.sample
   prompt("You chose: #{choice}; Computer chose: #{computer_choice}")
