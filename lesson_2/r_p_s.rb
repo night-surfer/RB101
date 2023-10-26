@@ -1,65 +1,66 @@
-VALID_CHOICES = %w(rock paper scissors)
-
+VALID_CHOICE = %w(rock paper scissors)
 ABBREVIATIONS = %w(r p s)
 
 def prompt(message)
-  Kernel.puts("=> #{message}")
+  puts "==> #{message}"
 end
 
-def win?(first, second)
-  (first == 'rock' && second == 'scissors') ||
-    (first == 'paper' && second == 'rock') ||
-    (first == 'scissors' && second == 'paper')
-end
+player_choice = nil
+user_tally = 0
+comp_tally = 0
 
-def display_results(player, computer)
-  if win?(player, computer)
-    prompt("You won!")
-  elsif win?(computer, player)
-    prompt("The computer won.")
-  else
-    prompt("It's a tie!")
-  end
-end
-
-# Just an idea to flush out...
-#count = 0
-#def tally(winner)
-#  if player count == 3
-#    puts "You just became the grand winner!"
-#  elsif computer count == 3
-#    puts "Sorry, the computer is the grand winner!"
-#  end
-#end
-
+prompt("Welcome to the game 'Rock, Paper, Scissors'")
 loop do
-  choice = ''
+  prompt("Let's play!")
   loop do
-    prompt("Choose one: #{VALID_CHOICES.join(', ')}?")
-    choice = Kernel.gets().chomp()
-
-    if VALID_CHOICES.include?(choice) || ABBREVIATIONS.include?(choice)
-      break
-    else
-      prompt("That's not a valid choice.")
-    end
+    prompt("Please choose one: #{VALID_CHOICE.join(', ')}")
+    player_choice = gets.chomp
+    break if VALID_CHOICE.include?(player_choice) || ABBREVIATIONS.include?(player_choice)
+    prompt("Hmmm, maybe there was a typo.")
+  end  
+  
+  if player_choice.length == 1
+    idx = ABBREVIATIONS.index(player_choice)
+    player_choice = VALID_CHOICE[idx]
   end
 
-#adding part for using abreviations
-  if choice.length == 1
-    idx = ABBREVIATIONS.index(choice)
-    choice = VALID_CHOICES[idx]
-  end
+  computer_choice = VALID_CHOICE.sample
+#  ask why lines 29 through 46 won't work as a method definition????
+#  who_won(player_choice, computer_choice)
+  prompt("It looks like you chose #{player_choice}, and the computer chose #{computer_choice}.
+    >>>>>>><<<<<<<")
+  if player_choice == 'rock'     && computer_choice == 'scissors' ||
+     player_choice == 'paper'    && computer_choice == 'rock' ||
+     player_choice == 'scissors' && computer_choice == 'paper'
+    prompt("You won!
+    >>>>>>><<<<<<<")
+    user_tally += 1
+    prompt("So far you've won #{user_tally} times.") 
+  elsif player_choice == computer_choice
+    prompt("It is a tie!")
+  else
+    prompt("The computor won.
+    >>>>>>><<<<<<<")
+    comp_tally += 1
+    prompt("So far the computer has won #{comp_tally} times.")
+  end  
 
+  break if user_tally == 3 || comp_tally == 3  
 
-  computer_choice = VALID_CHOICES.sample
-  prompt("You chose: #{choice}; Computer chose: #{computer_choice}")
-
-  display_results(choice, computer_choice)
-
-  prompt("Want to play again? Press Y to continue:")
-  ans = gets.chomp.downcase
-  break unless ans.start_with?('y')
+  prompt("Would you like to play again? (Press 'y')")
+  answer = gets.chomp.downcase
+  break unless answer.start_with?('y', 's')
+  prompt("Sweet! I was hoping you'd say that.")
 end
 
-prompt("Thanks for playing")
+if comp_tally == 3
+puts "+-----------------------------------+
+| The Computer is the grand winner! |
++-----------------------------------+"
+elsif user_tally == 3
+puts "+---------------------------+
+| You are the grand winner! |
++---------------------------+"
+else
+  prompt("Ok, thanks for playing.")
+end
