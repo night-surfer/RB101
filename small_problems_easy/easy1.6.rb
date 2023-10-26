@@ -1,3 +1,4 @@
+#figure out how to make different patterns!
 def triangle(num)
   spaces = num - 1
   stars = 1
@@ -48,3 +49,10 @@ top_left_triangle(6)
 left_triangle(6)
 top_right_triangle(6)
 triangle(6)
+top_left_triangle(6)
+left_triangle(6)
+top_left_triangle(6)
+left_triangle(6)
+top_right_triangle(6)
+triangle(6)
+top_left_triangle(6)

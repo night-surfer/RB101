@@ -1,5 +1,10 @@
 # 1.1 Repeat Yourself
-#recieve two arguments, a string and a positive integer, and repeat the strin as many times as the integer
+# Write a method that takes two arguments, a string and a positive integer, 
+#and prints the string as many times as the integer indicates.
+repeat('Hello', 3) # example
+
+#recieve two arguments, a string and a positive integer, and repeat 
+#the strin as many times as the integer
 
 def repeat(string, integer)
 # first establish that the integer is positive
