@@ -11,6 +11,6 @@ operator_prompt: "What operation would you like to perform?\n
     4) divide"
 operator_error: "Must choose 1,2,3, or 4"
 operation_message: "#{operation_to_message(operator)} the two numbers..."
-resut: "The result is #{result}"
+result: "The result is #{result}"
 ask_again: "Do you want to perform another operation? (y to do another)"
 goodbye: "OK! Thanks for using this calculator."
