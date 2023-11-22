@@ -7,12 +7,14 @@ def valid_num?(number)
 end
 
 def operation_to_msg(op)
-  case op
-  when '1' then 'Adding'
-  when '2' then 'Subtracting'
-  when '3' then 'Multiplying'
-  when '4' then 'Dividing'
+  choice = case op # setting 'choice' as a variable allows us to add to this methodvif we need to without having to mess with the case statement!
+    when '1' then 'Adding'
+    when '2' then 'Subtracting'
+    when '3' then 'Multiplying'
+    when '4' then 'Dividing'
   end
+# You can add to this method here: x = 'a random line of code'
+  choice
 end
 
 prompt("Welcome to Calculator. Please tell me your name")
